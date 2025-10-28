@@ -1,0 +1,265 @@
+\documentclass[a4paper,11pt,landscape,draft]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[german]{babel}
+\usepackage[margin=0.5cm]{geometry}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{calc}
+
+\tcbuselibrary{skins}
+
+% Color definitions from CSS
+\definecolor{accgreen}{RGB}{143,228,180}     % Goals: What should the software do?
+\definecolor{accblue}{RGB}{148,215,239}      % Solution: How we can achieve it?
+\definecolor{accred}{RGB}{255,199,198}       % Assessment: How do we evaluate the situation?
+\definecolor{darkgray}{RGB}{80,80,80}        % darkgray for frames etc.
+
+% Makros für Inhalte
+\newcommand{\systemname}{Ihr System}
+\newcommand{\teamname}{Ihr Team}
+\newcommand{\workshopdate}{\today}
+\newcommand{\iteration}{v1.0}
+
+\newcommand{\businesscasecontent}{
+Kurze Beschreibung des Business Case oder ökonomischen Treibers hinter dem Softwaresystem.
+}
+
+\newcommand{\functionaloverviewcontent}{
+Die wichtigsten funktionalen Anforderungen auf hoher Ebene.
+}
+
+\newcommand{\qualitygoalscontent}{
+Die drei wichtigsten Qualitätsziele für die Architektur mit höchster Priorität für die wichtigsten Stakeholder.
+}
+
+\newcommand{\businesscontextcontent}{
+Trennen Sie Ihr System als Black Box von allen Kommunikationspartnern. Kommunikationspartner sind benachbarte externe Systeme und Benutzer.
+
+\vspace{5mm}
+
+Platz für Diagramm oder weitere Kontextinformationen.
+}
+
+\newcommand{\orgconstraintscontent}{
+Jede organisatorische Anforderung, die die Entscheidungsfreiheit der Software-Architekten einschränkt.
+}
+
+\newcommand{\techconstraintscontent}{
+Jede technische Anforderung, die die Entscheidungsfreiheit der Software-Architekten einschränkt.
+}
+
+\newcommand{\archhypothesescontent}{
+Resultierende Architekturhypothesen und wichtige, teure, großskalige oder riskante Entscheidungen inkl. Begründungen.
+}
+
+\newcommand{\challengesriskscontent}{
+Identifizierte aktuell bekannte Herausforderungen und technische Risiken.
+}
+
+% Spaltenbreite berechnen (4 Spalten ohne Abstand)
+\newlength{\colwidth}
+\setlength{\colwidth}{0.25\textwidth}
+\newlength{\doublecolwidth}
+\setlength{\doublecolwidth}{0.5\textwidth}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\setlength{\fboxsep}{0pt}
+\setlength{\fboxrule}{0.1pt}
+
+\begin{document}
+% Header
+\begin{tcolorbox}[
+    colback=white,
+    colframe=darkgray,
+    boxrule=0.5mm,
+    arc=2mm,
+    left=5mm,
+    right=5mm,
+    top=2mm,
+    bottom=2mm
+]
+{\Large\bfseries\color{black} Architecture Inception Canvas}
+\hfill
+\begin{minipage}[t]{0.5\textwidth}
+\raggedleft
+\small
+\textbf{Software System:} \systemname \quad
+\textbf{Designed by Team:} \teamname \\
+\textbf{Workshop Date:} \workshopdate \quad
+\textbf{Iteration:} \iteration
+\end{minipage}
+\end{tcolorbox}
+% Zeile 1: Business Case (volle Breite - 4 Spalten)
+\noindent
+\begin{minipage}[t]{\textwidth}
+\begin{tcolorbox}[
+    enhanced,
+    colback=white,
+    colbacktitle=accgreen,
+    colframe=accgreen,
+    boxrule=0.8mm,
+    arc=2mm,
+    height=2.4cm,
+    title={\textbf{Business Case}},
+    fonttitle=\bfseries\color{black},
+    coltitle=black,
+    left=4mm,
+    right=4mm,
+    top=2mm,
+    bottom=4mm
+]
+\businesscasecontent
+\end{tcolorbox}
+\end{minipage}%
+% Zeilen 2+3: Functional Overview | Business Context (2 Zeilen hoch) | Organisational Constraints
+%             Quality Goals       |                                  | Technical Constraints
+\par\nointerlineskip
+\vspace{2mm}
+\noindent%
+\begin{minipage}[t]{\colwidth}
+\vspace{0pt}
+% Functional Overview
+\begin{tcolorbox}[
+    enhanced,
+    colback=white,
+    colbacktitle=accgreen,
+    colframe=accgreen,
+    boxrule=0.8mm,
+    arc=2mm,
+    height=4.4cm,
+    title={\textbf{Functional Overview}},
+    fonttitle=\bfseries\small\color{black},
+    coltitle=black
+]
+\small
+\functionaloverviewcontent
+\end{tcolorbox}%
+\par\nointerlineskip
+\noindent%
+% Quality Goals
+\begin{tcolorbox}[
+    enhanced,
+    colback=white,
+    colbacktitle=accgreen,
+    colframe=accgreen,
+    boxrule=0.8mm,
+    arc=2mm,
+    height=4.4cm,
+    title={\textbf{Quality Goals}},
+    fonttitle=\bfseries\small\color{black},
+    coltitle=black
+]
+\small
+\qualitygoalscontent
+\end{tcolorbox}
+\end{minipage}%
+\begin{minipage}[t]{\doublecolwidth}
+\vspace{0pt}
+% Business Context (2 Zeilen hoch)
+\begin{tcolorbox}[
+    enhanced,
+    colback=white,
+    colbacktitle=accgreen,
+    colframe=accgreen,
+    boxrule=0.8mm,
+    arc=2mm,
+    height=9.0cm,
+    title={\textbf{Business Context}},
+    fonttitle=\bfseries\small\color{black},
+    coltitle=black
+]
+\small
+\businesscontextcontent
+\end{tcolorbox}
+\end{minipage}%
+\begin{minipage}[t]{\colwidth}
+\vspace{0pt}
+% Organisational Constraints
+\begin{tcolorbox}[
+    enhanced,
+    colback=white,
+    colbacktitle=accgreen,
+    colframe=accgreen,
+    boxrule=0.8mm,
+    arc=2mm,
+    height=4.4cm,
+    title={\textbf{Organisational Constraints}},
+    fonttitle=\bfseries\small\color{black},
+    coltitle=black
+]
+\small
+\orgconstraintscontent
+\end{tcolorbox}%
+\par\nointerlineskip
+% Technical Constraints
+\begin{tcolorbox}[
+    enhanced,
+    colback=white,
+    colbacktitle=accgreen,
+    colframe=accgreen,
+    boxrule=0.8mm,
+    arc=2mm,
+    height=4.4cm,
+    title={\textbf{Technical Constraints}},
+    fonttitle=\bfseries\small\color{black},
+    coltitle=black
+]
+\small
+\techconstraintscontent
+\end{tcolorbox}
+\end{minipage}
+% Zeile 4: Architectural Hypotheses (2 Spalten) | Technical Challenges & Risks (2 Spalten)
+\par\nointerlineskip
+\vspace{2mm}
+\noindent
+\begin{minipage}[t]{\doublecolwidth}
+\vspace{0pt}
+\begin{tcolorbox}[
+    enhanced,
+    colback=white,
+    colbacktitle=accblue,
+    colframe=accblue,
+    boxrule=0.8mm,
+    arc=2mm,
+    height=4.4cm,
+    title={\textbf{Architectural Hypotheses}},
+    fonttitle=\bfseries\color{black},
+    coltitle=black
+]
+\small
+\archhypothesescontent
+\end{tcolorbox}
+\end{minipage}%
+\begin{minipage}[t]{\doublecolwidth}
+\vspace{0pt}
+\begin{tcolorbox}[
+    enhanced,
+    colback=white,
+    colbacktitle=accred,
+    colframe=accred,
+    boxrule=0.8mm,
+    arc=2mm,
+    height=4.4cm,
+    title={\textbf{Technical Challenges \& Risks}},
+    fonttitle=\bfseries\color{black},
+    coltitle=black
+]
+\small
+\challengesriskscontent
+\end{tcolorbox}
+\end{minipage}
+% Footer
+\begin{center}
+\scriptsize
+\textit{Software Architecture Canvas by Patrick Roos and arc42 Contributors is licensed under Attribution-ShareAlike 4.0 International}\\
+\url{https://canvas.arc42.org}
+\end{center}
+
+\end{document}

@@ -1,0 +1,11 @@
+.*.sw?
+*.bak
+*~
+build/
+.gradle/
+.vscode/
+*.pdf
+*.ps
+*.out
+*.aux
+*.dvi
