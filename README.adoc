@@ -1,0 +1,273 @@
+= arc42 Canvas LaTeX Templates
+:toc: left
+:toclevels: 3
+
+LaTeX templates for the https://canvas.arc42.org[arc42 Canvas] collection:
+
+* *AIC* - Architecture Inception Canvas
+* *ACC* - Architecture Communication Canvas
+
+== Repository Structure
+
+----
+.
+├── acc-template.tex           # ACC main template
+├── aic-template.tex           # AIC main template
+├── content/
+│   ├── acc-sample-de.tex      # German sample content with prompts
+│   ├── acc-sample-en.tex      # English sample content with prompts
+│   ├── acc-sample-plain.tex   # Empty template for your content
+│   ├── aic-sample-de.tex      # German sample content with prompts
+│   ├── aic-sample-en.tex      # English sample content with prompts
+│   └── aic-sample-plain.tex   # Empty template for your content
+└── README.adoc
+----
+
+== Quick Start
+
+=== Method 1: Command-Line with Variable Override
+
+Override the content file selection at compile time:
+
+[source,bash]
+----
+# Direct pdflatex with content selection
+pdflatex "\def\contentfile{en}\input{acc-template.tex}"
+pdflatex "\def\contentfile{plain}\input{aic-template.tex}"
+----
+
+==== Wrapper Script Integration
+
+For custom build scripts or CI/CD, parse `-D` options and construct the `\def` command:
+
+[source,bash]
+----
+# Parse: -D contentfile=en  →  Construct: \def\contentfile{en}
+pdflatex "\def\contentfile{${value}}\input{${template}}"
+----
+
+Example `getopts` integration (3 lines):
+
+[source,bash]
+----
+'D') DEF="${OPTARG}"; LATEX_DEFS="${LATEX_DEFS}\\def\\${DEF%%=*}{${DEF#*=}}" ;;
+# Later in pdflatex invocation:
+pdflatex "${LATEX_DEFS}\\input{${LETTER_FN}}"
+----
+
+=== Method 2: Edit Template Default
+
+Change the default content variant in the template file:
+
+[source,latex]
+----
+% In acc-template.tex or aic-template.tex, change:
+\providecommand{\contentfile}{de}  % to: en, plain, or custom
+----
+
+Then compile normally:
+
+[source,bash]
+----
+pdflatex acc-template.tex
+----
+
+=== Method 3: Customize Content
+
+Edit a content file (e.g., `content/acc-sample-plain.tex`):
+
+[source,latex]
+----
+\newcommand{\systemname}{Your System Name}
+\newcommand{\teamname}{Your Team Name}
+\newcommand{\workshopdate}{\today}
+\newcommand{\iteration}{v1.0}
+
+\newcommand{\valuepropositioncontent}{
+Your actual content here...
+}
+----
+
+== Content Files Explained
+
+Sample files with prompts (-sample-de.tex / -sample-en.tex)::
+  Contain headlines, example prompts, and questions from the original arc42 Canvas website. +
+  Perfect for workshops or when you need guidance on what to include.
+
+Plain files (-sample-plain.tex)::
+  Contain headlines and empty content ready for your input. +
+  Perfect when you know what you want to write and just need the structure.
+
+== Customization Options
+
+=== Changing Box Headlines
+
+Customize any box headline in your content file:
+
+[source,latex]
+----
+\newcommand{\valuepropositionheadline}{Our Value}  % Instead of "Value Proposition"
+----
+
+=== Adjusting Layout
+
+The templates use fixed dimensions optimized for A4 landscape:
+
+`\baseheight`:: Height unit for boxes
+`\rowgap`:: Spacing between rows
+`\definecolor`:: Box color definitions
+
+=== Language Settings
+
+Change the https://ctan.org/pkg/babel[babel] package language:
+
+[source,latex]
+----
+\usepackage[english]{babel}  % For English
+\usepackage[french]{babel}   % For French
+----
+
+== Architecture Communication Canvas (ACC)
+
+=== Box Overview
+
+[cols="1,1,2",options="header"]
+|===
+|Box |Color |Description
+
+|Value Proposition |Green |Core business case or economic driver
+|Key Stakeholder |Green |Who creates/receives value
+|Core Functions |Green |Most important features and use cases
+|Quality Requirements |Green |Speed, scalability, security, etc.
+|Business Context |Green |External interfaces and systems
+|Components/Modules |Blue |Major building blocks
+|Core Decisions |Blue |Good or bad decisions made
+|Technologies |Blue |Tech stack used
+|Risks and Missing Info |Red |Problems and knowledge gaps
+|===
+
+=== When to Use ACC
+
+Use the Architecture Communication Canvas when you need to:
+
+Communicate:: existing architecture to stakeholders
+Document:: the current state of a system
+Onboard:: new team members
+Review:: architectural decisions
+Identify:: risks and missing information
+
+== Architecture Inception Canvas (AIC)
+
+=== Box Overview
+
+[cols="1,1,2",options="header"]
+|===
+|Box |Color |Description
+
+|Business Case |Green |Why the system exists
+|Functional Overview |Green |What the system does
+|Quality Goals |Green |Top 3 quality attributes
+|Business Context |Green |System boundaries and partners
+|Organisational Constraints |Green |Org requirements limiting freedom
+|Technical Constraints |Green |Tech requirements limiting freedom
+|Architectural Hypotheses |Blue |Initial architectural decisions
+|Technical Challenges & Risks |Red |Known challenges and risks
+|===
+
+=== When to Use AIC
+
+Use the Architecture Inception Canvas when you need to:
+
+Start:: a new project or initiative
+Align:: team on initial architectural direction
+Define:: constraints and quality goals
+Identify:: early risks and challenges
+Create:: architectural hypotheses to validate
+
+== Creating Your Own Content Template
+
+To create a project-specific content template:
+
+1. Copy `content/acc-sample-plain.tex` (or `aic-sample-plain.tex`)
+2. Rename to your project, e.g., `content/acc-myproject.tex`
+3. Fill in your content
+4. Override with: `pdflatex "\def\contentfile{myproject}\input{acc-template.tex}"`
+
+You can maintain multiple content files for different systems or iterations!
+
+== Dependencies
+
+Required LaTeX packages:
+
+https://ctan.org/pkg/inputenc[inputenc]:: UTF-8 encoding
+https://ctan.org/pkg/fontenc[fontenc]:: T1 font encoding
+https://ctan.org/pkg/babel[babel]:: Language support
+https://ctan.org/pkg/geometry[geometry]:: Page layout
+https://ctan.org/pkg/tcolorbox[tcolorbox]:: Colored boxes
+https://ctan.org/pkg/pgf[tikz]:: Graphics
+https://ctan.org/pkg/xcolor[xcolor]:: Colors
+https://ctan.org/pkg/hyperref[hyperref]:: Links
+https://ctan.org/pkg/url[url]:: URL formatting
+https://ctan.org/pkg/calc[calc]:: Length calculations
+
+== License
+
+These templates are based on the arc42 Canvas collection:
+
+* *Architecture Inception Canvas* by Patrick Roos and arc42 Contributors
+* *Architecture Communication Canvas* by Gernot Starke and arc42 Contributors
+
+Both licensed under https://creativecommons.org/licenses/by-sa/4.0/[CC BY-SA 4.0]
+
+LaTeX implementation: Jens Rehsack
+
+== Resources
+
+* https://canvas.arc42.org[arc42 Canvas Website]
+* https://arc42.org[arc42 Documentation]
+* https://quality.arc42.org[Quality Model (Q42)]
+* https://techstackcanvas.io[Technology Stack Canvas]
+
+== Tips for Workshops
+
+[arabic]
+. *Start with sample files* to see the prompting questions
+. *Use plain files* once familiar with the canvas structure
+. *Print in color* for better visual distinction
+. *One page per canvas* works best for workshops
+. *Iterate* - update the `\iteration` field for each revision
+. *Keep it brief* - canvases are meant to be concise
+
+== Troubleshooting
+
+=== Compilation Errors
+
+*Problem:* `! LaTeX Error: File 'content/acc-sample-de.tex' not found`
+
+*Solution:* Ensure the content file exists and the path in `\include` is correct (without .tex extension).
+
+'''
+
+*Problem:* Text overflow from boxes
+
+*Solution:* Keep content concise. Use bullet points. Adjust `\small` to `\footnotesize` if needed.
+
+=== Layout Issues
+
+*Problem:* Boxes not aligned properly
+
+*Solution:* Don't add extra spaces or newlines between minipage environments in the template.
+
+'''
+
+*Problem:* Canvas doesn't fit on page
+
+*Solution:* Check your page margins and `\baseheight` settings. Default is optimized for A4 landscape.
+
+== Contributing
+
+Found an issue? Have an improvement? Contributions welcome!
+
+---
+
+*Happy canvas creation!* 🎨

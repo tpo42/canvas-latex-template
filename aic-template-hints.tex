@@ -8,21 +8,33 @@
 \usepackage{tikz}
 \usepackage{xcolor}
 \usepackage{calc}
+\usepackage{multirow,tabularx}
+\usepackage{colortbl}
+\usepackage{enumitem}
 \usepackage{hyperref}
 
 \tcbuselibrary{skins}
 
 % Color definitions from CSS
-\definecolor{accgreen}{RGB}{143,228,180}     % Goals: What should the software do?
-\definecolor{accblue}{RGB}{148,215,239}      % Solution: How we can achieve it?
-\definecolor{accred}{RGB}{255,199,198}       % Assessment: How do we evaluate the situation?
+\definecolor{accgreen}{RGB}{143,228,180}     % requirement
+\definecolor{accblue}{RGB}{148,215,239}      % solution
+\definecolor{accred}{RGB}{255,199,198}       % problem
 \definecolor{darkgray}{RGB}{80,80,80}        % darkgray for frames etc.
+\definecolor{markercolor}{RGB}{255,100,0}    % orange for markers
+
+% Marker command - places circled letter
+\newcommand{\marker}[1]{%
+  \tikz[baseline=-0.5ex]{
+    \node[circle,fill=markercolor,text=white,font=\scriptsize\bfseries,
+          inner sep=1.5pt,minimum size=10pt] {#1};
+  }%
+}
 
 % Content file selection (can be overridden via command line)
 % Default: German sample with prompts
 % Usage: pdflatex "\def\contentfile{en}\input{aic-template.tex}"
 % Or:    pdflatex "\def\contentfile{plain}\input{aic-template.tex}"
-%\providecommand{\contentfile}{de}
+\providecommand{\contentfile}{de}
 \include{content/aic-sample-\contentfile.tex}
 
 % Calculate column width (4 columns without gap)
@@ -72,7 +84,7 @@
     boxrule=0.8mm,
     arc=2mm,
     height=2.4cm,
-    title={\textbf{\businesscaseheadline}},
+    title={\textbf{\businesscaseheadline}\hfill\marker{A}},
     fonttitle=\bfseries\color{black},
     coltitle=black,
     left=4mm,
@@ -99,7 +111,7 @@
     boxrule=0.8mm,
     arc=2mm,
     height=4.4cm,
-    title={\textbf{\functionaloverviewheadline}},
+    title={\textbf{\functionaloverviewheadline}\hfill\marker{B}},
     fonttitle=\bfseries\small\color{black},
     coltitle=black
 ]
@@ -117,7 +129,7 @@
     boxrule=0.8mm,
     arc=2mm,
     height=4.4cm,
-    title={\textbf{\qualitygoalsheadline}},
+    title={\textbf{\qualitygoalsheadline}\hfill\marker{C}},
     fonttitle=\bfseries\small\color{black},
     coltitle=black
 ]
@@ -136,7 +148,7 @@
     boxrule=0.8mm,
     arc=2mm,
     height=9.0cm,
-    title={\textbf{\businesscontextheadline}},
+    title={\textbf{\businesscontextheadline}\hfill\marker{D}},
     fonttitle=\bfseries\small\color{black},
     coltitle=black
 ]
@@ -155,7 +167,7 @@
     boxrule=0.8mm,
     arc=2mm,
     height=4.4cm,
-    title={\textbf{\orgconstraintsheadline}},
+    title={\textbf{\orgconstraintsheadline}\hfill\marker{E}},
     fonttitle=\bfseries\small\color{black},
     coltitle=black
 ]
@@ -172,7 +184,7 @@
     boxrule=0.8mm,
     arc=2mm,
     height=4.4cm,
-    title={\textbf{\techconstraintsheadline}},
+    title={\textbf{\techconstraintsheadline}\hfill\marker{F}},
     fonttitle=\bfseries\small\color{black},
     coltitle=black
 ]
@@ -194,7 +206,7 @@
     boxrule=0.8mm,
     arc=2mm,
     height=4.4cm,
-    title={\textbf{\archhypothesesheadline}},
+    title={\textbf{\archhypothesesheadline}\hfill\marker{G}},
     fonttitle=\bfseries\color{black},
     coltitle=black
 ]
@@ -212,7 +224,7 @@
     boxrule=0.8mm,
     arc=2mm,
     height=4.4cm,
-    title={\textbf{\challengesrisksheadline}},
+    title={\textbf{\challengesrisksheadline}\hfill\marker{H}},
     fonttitle=\bfseries\color{black},
     coltitle=black
 ]
@@ -225,6 +237,44 @@
 \scriptsize
 \textit{Software Architecture Canvas by Patrick Roos and arc42 Contributors is licensed under Attribution-ShareAlike 4.0 International}\\
 \url{https://canvas.arc42.org}
+\end{center}
+
+%=============================================================================
+% PAGE 2: HINTS TABLE
+%=============================================================================
+\newpage
+
+\begin{center}
+{\Large\bfseries Architecture Communication Canvas -- Hints \& Guidance}
+\end{center}
+
+\vspace{3mm}
+
+% Compact lists in hints
+\setlist[itemize]{topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=2pt,leftmargin=*}
+
+% Two-column hints table with top-aligned cells
+\noindent
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}p{8mm}|>{\raggedright\arraybackslash}X|>{\centering\arraybackslash}p{8mm}|>{\raggedright\arraybackslash}X|}
+\hline
+\rowcolor{accgreen!20}
+\textbf{Box} & \textbf{Hint} & \textbf{Box} & \textbf{Hint} \\
+\hline
+\marker{A} & \small\businesscasehint & \marker{E} & \small\orgconstraintshint \\
+\hline
+\marker{B} & \small\functionaloverviewhint & \marker{F} & \small\techconstraintshint \\
+\hline
+\marker{C} & \small\qualitygoalshint & \marker{G} & \small\archhypotheseshint \\
+\hline
+\marker{D} & \small\businesscontexthint & \marker{H} & \small\challengesriskshint \\
+\hline
+\end{tabularx}
+
+\vspace{3mm}
+
+\begin{center}
+\small
+\textit{For more details, visit \url{https://canvas.arc42.org/architecture-inception-canvas}}
 \end{center}
 
 \end{document}
