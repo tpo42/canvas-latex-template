@@ -9,6 +9,14 @@
 Was ist der Kern des Business Case oder der ökonomische Treiber hinter dem System?
 }
 \newcommand{\valuepropositionhint}{
+Beantworten Sie mindestens eine der folgenden Fragen:
+\begin{itemize}
+\item Was sind die Hauptziele des Systems?
+\item Welchen Wert liefert das System dem Kunden?
+\item Was sind die wichtigsten geschäftlichen Ziele des Systems?
+\item Warum wird das System gebaut und betrieben?
+\item Was ist seine Kernverantwortung?
+\end{itemize}
 }
 
 \newcommand{\keystakeholderheadline}{Key Stakeholder}
@@ -16,6 +24,14 @@ Was ist der Kern des Business Case oder der ökonomische Treiber hinter dem Syst
 Für wen schaffen wir Wert? Wer sind die Kunden? Wer bezahlt? Wer trägt bei?
 }
 \newcommand{\keystakeholderhint}{
+Identifizieren Sie die wichtigsten Stakeholder des Systems:
+\begin{itemize}
+\item Für wen schaffen wir Wert?
+\item Wer bezahlt die Entwicklung?
+\item Wer bezahlt den Betrieb?
+\item Wer sind unsere wichtigsten Kunden?
+\item Wer sind unsere wichtigsten Beitragenden?
+\end{itemize}
 }
 
 \newcommand{\corefunctionsheadline}{Core Functions}
@@ -23,6 +39,13 @@ Für wen schaffen wir Wert? Wer sind die Kunden? Wer bezahlt? Wer trägt bei?
 Die wichtigsten Funktionen, Features oder Use Cases. Welche Aktivitäten oder Prozesse werden unterstützt?
 }
 \newcommand{\corefunctionshint}{
+\begin{itemize}
+\item Was sind die wichtigsten Funktionen, Features oder Use-Cases des Systems?
+\item Welche Aktivitäten oder Prozesse bietet es?
+\item Was ist der wichtigste Use-Case?
+\item Welche Funktionen generieren hohen Wert für die Stakeholder?
+\item Welche Funktionen sind riskant, gefährlich oder kritisch?
+\end{itemize}
 }
 
 \newcommand{\qualityrequirementsheadline}{Quality Requirements}
@@ -30,6 +53,9 @@ Die wichtigsten Funktionen, Features oder Use Cases. Welche Aktivitäten oder Pr
 Geschwindigkeit, Skalierbarkeit, Zuverlässigkeit, Benutzerfreundlichkeit, Sicherheit, Kapazität, Flexibilität oder ähnliches.
 }
 \newcommand{\qualityrequirementshint}{
+Was sind die wichtigen Qualitätsziele und Anforderungen, wie Geschwindigkeit, Skalierbarkeit, Zuverlässigkeit, Benutzerfreundlichkeit, Sicherheit, Kapazität oder ähnliches.
+
+Siehe die begleitende \href{https://quality.arc42.org/}{Website zu Qualität}, wo Sie detaillierte Beschreibungen von mehr als 130 Qualitätsattributen sowie zahlreiche Beispiele spezifischer Qualitätsanforderungen finden.
 }
 
 \newcommand{\businesscontextheadline}{Business Context}
@@ -37,6 +63,15 @@ Geschwindigkeit, Skalierbarkeit, Zuverlässigkeit, Benutzerfreundlichkeit, Siche
 Wichtige externe Schnittstellen oder benachbarte Systeme, einschließlich wichtiger Akteure oder Benutzerrollen.
 }
 \newcommand{\businesscontexthint}{
+Welche externen Systeme, Schnittstellen oder benachbarten Systeme…
+\begin{itemize}
+\item sind die wichtigsten Datenquellen?
+\item sind die wichtigsten Datensenken?
+\item bestimmen unsere Zuverlässigkeit, Verfügbarkeit, Performance oder andere kritische Qualitätsanforderungen?
+\item sind sehr volatil oder riskant?
+\item haben hohe Betriebskosten (z.B. Pay-per-Use)?
+\item sind schwierig zu implementieren, zu betreiben oder zu überwachen?
+\end{itemize}
 }
 
 \newcommand{\componentsmodulesheadline}{Components/Modules}
@@ -44,6 +79,7 @@ Wichtige externe Schnittstellen oder benachbarte Systeme, einschließlich wichti
 Hauptbausteine des Systems: wichtige Subsysteme, Module, Services.
 }
 \newcommand{\componentsmoduleshint}{
+Was sind die wichtigsten Bausteine des Systems (z.B. Module, Subsysteme, Packages, Komponenten, Services)?
 }
 
 \newcommand{\coredecisionsheadline}{Core Decisions -- Good or Bad}
@@ -51,6 +87,13 @@ Hauptbausteine des Systems: wichtige Subsysteme, Module, Services.
 Welche Entscheidungen haben zum aktuellen Zustand geführt? Auf welche sind Sie besonders stolz? Welche haben sich als fragwürdig oder schmerzhaft erwiesen?
 }
 \newcommand{\coredecisionshint}{
+Welche Entscheidungen…
+\begin{itemize}
+\item haben zum aktuellen Zustand des Systems geführt?
+\item machen Sie besonders stolz?
+\item haben sich als fragwürdig, falsch oder schmerzhaft erwiesen?
+\item können Sie aus heutiger Sicht nicht mehr verstehen?
+\end{itemize}
 }
 
 \newcommand{\technologiesheadline}{Technologies}
@@ -58,6 +101,18 @@ Welche Entscheidungen haben zum aktuellen Zustand geführt? Auf welche sind Sie 
 Die wichtigsten verwendeten Technologien für Entwicklung und Betrieb: Programmiersprachen, Frameworks, Datenbanken, Cloud-Provider, etc.
 }
 \newcommand{\technologieshint}{
+Was sind die wichtigsten Technologien, die für Entwicklung und Betrieb des Systems verwendet werden?
+
+Zum Beispiel:
+\begin{itemize}
+\item Programmiersprachen und Technologien
+\item Frameworks (wie SpringBoot, .NET, Flask, Django)
+\item Datenbank oder Middleware
+\item technische Infrastruktur wie physische Hardware, Server, Rechenzentren, Cloud-Provider, Hyperscaler oder ähnliches
+\item Betriebstechnologien und -umgebung
+\item Monitoring- und Administrationstechnologien und -umgebung
+\end{itemize}
+Siehe das begleitende \href{https://techstackcanvas.io/}{Technology Stack Canvas}.
 }
 
 \newcommand{\risksmissinginfoheadline}{Risks and Missing Information}
@@ -65,4 +120,12 @@ Die wichtigsten verwendeten Technologien für Entwicklung und Betrieb: Programmi
 Bekannte Probleme und Risiken? Welche Informationen fehlen oder sind verloren gegangen? Was hindert das Team daran, schneller besseren Wert zu liefern?
 }
 \newcommand{\risksmissinginfohint}{
+\begin{itemize}
+\item Was sind bekannte Probleme?
+\item Welche Teile des Systems verursachen bekanntermaßen Probleme während Implementierung, Test oder Betrieb?
+\item Welche Prozesse (Anforderungen, Architektur/Implementierung, Test, Rollout, Administration, Betrieb) verursachen Probleme?
+\item Was behindert die Entwicklung oder Wertschöpfung?
+\item Was würden Sie gerne über das System wissen, finden aber derzeit nicht heraus?
+\item Was hindert das Team daran, schneller besseren Wert zu liefern?
+\end{itemize}
 }

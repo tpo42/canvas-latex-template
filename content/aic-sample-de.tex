@@ -9,6 +9,11 @@
 Kurze Beschreibung des Business Case oder ökonomischen Treibers hinter dem Softwaresystem.
 }
 \newcommand{\businesscasehint}{
+Wenn das Unternehmen Geld verdienen muss, gibt es einen wirtschaftlichen Treiber und einen Business Case hinter jeder Initiative. Wenn nicht, ist es ein Hobby oder ein NGO-Projekt.
+
+Am Anfang steht immer das WARUM. -- Beginnen Sie mit dem WARUM.
+
+Eine häufige Falle ist, dass das Entwicklungsteam oder schlimmer noch das gesamte Produktteam sich der spezifischen wirtschaftlichen Treiber und des Business Case hinter diesen Software-Initiativen nicht bewusst ist.
 }
 
 \newcommand{\functionaloverviewheadline}{Functional Overview}
@@ -16,6 +21,18 @@ Kurze Beschreibung des Business Case oder ökonomischen Treibers hinter dem Soft
 Die wichtigsten funktionalen Anforderungen auf hoher Ebene.
 }
 \newcommand{\functionaloverviewhint}{
+Wenn Sie als Produktteam die funktionale Übersicht der Initiative erarbeiten, stellen Sie sich eine Produktbox Ihrer Lösung vor - was steht auf Ihrer Box?
+
+Was steht auf Ihrer Software-Produktbox?
+
+Denken Sie die Produktbox, um Antworten auf folgende Fragen zu erhalten:
+
+\begin{itemize}
+\item Welchen geschäftlichen Wert liefert die Software?
+\item Was sind die übergeordneten Geschäftsfunktionen?
+\end{itemize}
+
+Mit den Antworten auf diese Fragen können Sie die wichtigsten funktionalen Anforderungen auf hoher Ebene beschreiben.
 }
 
 \newcommand{\qualitygoalsheadline}{Quality Goals}
@@ -23,6 +40,11 @@ Die wichtigsten funktionalen Anforderungen auf hoher Ebene.
 Die drei wichtigsten Qualitätsziele für die Architektur mit höchster Priorität für die wichtigsten Stakeholder.
 }
 \newcommand{\qualitygoalshint}{
+Hier arbeiten Sie die drei wichtigsten Qualitätsziele der Stakeholder für das Softwaresystem heraus.
+
+Es ist wichtig, dass diese Qualitätsziele jedem Teammitglied bekannt sind, da sie Ihre Architektur prägen.
+
+Der Standard \href{https://iso25000.com/index.php/en/iso-25000-standards/iso-25010}{ISO/IEC 25010} bietet einen Überblick über mögliche interessante Qualitätsattribute, das moderne arc42-Qualitätsmodell (\href{https://quality.arc42.org/}{Q42}) sammelt mehr als 130 Qualitätsattribute mit ausführlichen Erklärungen und Beispielen.
 }
 
 \newcommand{\businesscontextheadline}{Business Context}
@@ -30,6 +52,13 @@ Die drei wichtigsten Qualitätsziele für die Architektur mit höchster Priorit�
 Trennen Sie Ihr System als Black Box von allen Kommunikationspartnern. Kommunikationspartner sind benachbarte externe Systeme und Benutzer.
 }
 \newcommand{\businesscontexthint}{
+Der Business Context konzentriert sich auf Ihr System als Black Box. Die Aufmerksamkeit richtet sich auf die Systemumgebung und wie das System mit allen externen Systemen darin interagiert.
+
+Mit dem Business Context können Sie die Kommunikationspfade und damit potenzielle technische Risiken identifizieren.
+
+Es ist ebenso eine gute Möglichkeit, mit verschiedenen Stakeholdern den Umfang des Systems und die Kommunikationspfade zu verschiedenen externen Systemen zu diskutieren.
+
+Wenn Sie versuchen, den Business Context herauszuarbeiten, versuchen Sie die Benutzer Ihres Systems und alle benachbarten Systeme zu identifizieren.
 }
 
 \newcommand{\orgconstraintsheadline}{Organisational Constraints}
@@ -37,6 +66,11 @@ Trennen Sie Ihr System als Black Box von allen Kommunikationspartnern. Kommunika
 Jede organisatorische Anforderung, die die Entscheidungsfreiheit der Software-Architekten einschränkt.
 }
 \newcommand{\orgconstraintshint}{
+Randbedingungen bestimmen den Grad Ihrer Freiheit, als Engineering-Team Entscheidungen zu treffen.
+
+In diesem Teil arbeiten Sie alle Anforderungen heraus, die Ihre Freiheit als Produktteam bei der Entwicklung des (Software-)Produkts einschränken.
+
+Organisatorische Randbedingungen beinhalten oft Zeit und Geld. Wir haben auch gesehen, dass es Einschränkungen bei den verwendeten Methoden (wie SAFe, Scrum, …) oder Techniken gibt.
 }
 
 \newcommand{\techconstraintsheadline}{Technical Constraints}
@@ -44,6 +78,13 @@ Jede organisatorische Anforderung, die die Entscheidungsfreiheit der Software-Ar
 Jede technische Anforderung, die die Entscheidungsfreiheit der Software-Architekten einschränkt.
 }
 \newcommand{\techconstraintshint}{
+Randbedingungen bestimmen den Grad Ihrer Freiheit, als Engineering-Team Entscheidungen zu treffen.
+
+In diesem Teil arbeiten Sie alle Anforderungen heraus, die Ihre Freiheit als Produktteam bei der Entwicklung des (Software-)Produkts einschränken.
+
+In größeren Unternehmen gibt es oft viele technische Randbedingungen. Es gibt oft ein übergeordnetes Architekturkomitee, das die Standards für Technologieentscheidungen setzt.
+
+Wenn Sie sich beispielsweise entscheiden, eine Single-Page-Anwendung zu bauen, wird das übergeordnete Architekturkomitee Angular als SPA-Framework festlegen, sodass es Expertisesynergien zwischen Teams gibt.
 }
 
 \newcommand{\archhypothesesheadline}{Architectural Hypotheses}
@@ -51,6 +92,13 @@ Jede technische Anforderung, die die Entscheidungsfreiheit der Software-Architek
 Resultierende Architekturhypothesen und wichtige, teure, großskalige oder riskante Entscheidungen inkl. Begründungen.
 }
 \newcommand{\archhypotheseshint}{
+Herzlichen Glückwunsch - Sie haben Ihren architektonischen Spielplatz erstellt.
+
+Jetzt können Sie Ihre ersten Architekturhypothesen basierend auf Ihrem aktuellen Teamwissen erstellen.
+
+Beachten Sie: Es geht hier um übergeordnete architektonische Annahmen, nicht um Mikro-Entscheidungen wie Designfragen.
+
+Idealerweise können Sie Ihre architektonischen Annahmen in Entwürfe für Architecture Decision Records umwandeln.
 }
 
 \newcommand{\challengesrisksheadline}{Technical Challenges \& Risks}
@@ -58,4 +106,9 @@ Resultierende Architekturhypothesen und wichtige, teure, großskalige oder riska
 Identifizierte aktuell bekannte Herausforderungen und technische Risiken.
 }
 \newcommand{\challengesriskshint}{
+Basierend auf dem Spielplatz, den Sie erstellt haben, wie Business Context und Scope, Qualitätsziele und Randbedingungen, können Sie die bevorstehenden Herausforderungen und die daraus resultierenden Risiken erfassen.
+
+Es ist sehr wichtig, dies herauszuarbeiten, kontinuierlich zu bewerten und den wichtigsten Stakeholdern im System zu kommunizieren.
+
+Dieser Abschnitt beantwortet die Frage, wie Sie die aktuelle Situation im Verhältnis zum erarbeiteten architektonischen Spielplatz bewerten.
 }
