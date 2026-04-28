@@ -1,0 +1,4 @@
+{
+  "name": "Canvas LaTeX",
+  "image": "danteev/texlive:latest"
+}

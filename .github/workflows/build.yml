@@ -1,0 +1,38 @@
+name: Build PDFs
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: danteev/texlive:latest
+
+    strategy:
+      matrix:
+        canvas: [acc, aic]
+        variant: [template, template-hints]
+        lang: [de, en, plain]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build PDF
+        run: |
+          jobname="${{ matrix.canvas }}-${{ matrix.variant }}-${{ matrix.lang }}"
+          pdflatex -interaction=nonstopmode \
+            -jobname="${jobname}" \
+            "\def\contentfile{${{ matrix.lang }}}\input{${{ matrix.canvas }}-${{ matrix.variant }}.tex}"
+          pdflatex -interaction=nonstopmode \
+            -jobname="${jobname}" \
+            "\def\contentfile{${{ matrix.lang }}}\input{${{ matrix.canvas }}-${{ matrix.variant }}.tex}"
+
+      - name: Upload PDF
+        if: ${{ !(matrix.variant == 'template-hints' && matrix.lang == 'plain') }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.canvas }}-${{ matrix.variant }}-${{ matrix.lang }}
+          path: "${{ matrix.canvas }}-${{ matrix.variant }}-${{ matrix.lang }}.pdf"
+          retention-days: 1
