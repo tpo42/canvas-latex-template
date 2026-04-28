@@ -102,7 +102,7 @@ jobs:
 
       - name: Download PDFs
         if: steps.version.outputs.new_tag
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: release-pdfs
 
